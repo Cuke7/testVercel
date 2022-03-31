@@ -27,7 +27,13 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/vuetify
     "@nuxtjs/vuetify",
-    "@nuxt/image",
+    [
+      "@nuxt/image",
+      {
+        provider: "static",
+        dir: "static/pictures",
+      },
+    ],
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
