@@ -31,7 +31,7 @@ export default {
       "@nuxt/image",
       {
         provider: "static",
-        dir: "static/pictures",
+        dir: "static/",
       },
     ],
   ],
