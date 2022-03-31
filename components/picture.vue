@@ -2,7 +2,7 @@
   <v-dialog v-model="dialog" max-width="1000">
     <template v-slot:activator="{ on, attrs }">
       <div class="text-center" v-bind="attrs" v-on="on">
-        <nuxt-img provider="static" :src="getUrl(index)" width="500">
+        <nuxt-img :src="getUrl(index)" width="500">
         </nuxt-img>
       </div>
     </template>
