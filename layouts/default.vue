@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="transparent">
+    <!-- <v-app-bar app color="#243aa3">
       <v-row class="pl-12">
         <v-col cols="auto">
           <nuxtLink to="/" class="white--text"> Photos </nuxtLink>
@@ -9,7 +9,7 @@
           <nuxtLink to="/apps" class="white--text"> Applications </nuxtLink>
         </v-col>
       </v-row>
-    </v-app-bar>
+    </v-app-bar> -->
     <v-main>
       <v-container fluid>
         <Nuxt />

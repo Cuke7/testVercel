@@ -1,164 +1,115 @@
 <template>
-  <v-row justify="center">
-    <v-col cols="12" lg="11" ref="col" class="pa-0">
-      <div id="toto" :style="{ height: height + 'px' }" class="mt-4 mx-2">
-        <v-row
-          justify="space-around"
-          class="mx-1"
-          ref="row"
-          :style="{ marginTop: space + 'px' }"
-        >
-          <v-col
-            v-for="(pic, index) in pictures"
-            :key="index"
-            cols="12"
-            md="4"
-            class="pa-0"
-            id="test"
-          >
-            <Picture :picture="pic" :index="index+1"></Picture>
-          </v-col>
-        </v-row>
-      </div>
-    </v-col>
-  </v-row>
+  <div class="mt-12">
+    <!-- <div class="text-h1 text-center my-12">Mes projets</div> -->
+    <div v-for="(app, index) in apps" :key="app.titre">
+      <Apps :projectData="app" :index="index" class="my-12"></Apps>
+    </div>
+    <div v-for="(project, index) in projects" :key="index">
+      <CodeProjects
+        :projectData="project"
+        :index="index"
+        class="my-12"
+      ></CodeProjects>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   data: () => ({
-    pictures: [
-      { info: "Merle noir - Turdus merula", id: "pic_2_mjk25k" },
-      { info: "Rouge-gorge familier - Erithacus rubecula", id: "pic_3_xjxp11" },
-      { info: "Mésange bleue - Cyanistes caeruleus", id: "pic_4_wxw2u5" },
-      { info: "Mésange bleue - Cyanistes caeruleus", id: "pic_5_gvkwoe" },
-      { info: "Mésange bleue - Cyanistes caeruleus", id: "pic_6_cqeg1b" },
-      { info: "Mésange bleue - Cyanistes caeruleus", id: "pic_7_u6arhk" },
-      { info: "Mésange bleue - Cyanistes caeruleus", id: "pic_33_fewvuk" },
-      { info: "Mésange bleue - Cyanistes caeruleus", id: "pic_9_psjqmh" },
-      { info: "Mésange bleue - Cyanistes caeruleus", id: "pic_8_dgiata" },
-      { info: "Mésange bleue - Cyanistes caeruleus", id: "pic_10_soc2d3" },
-      { info: "Mésange bleue - Cyanistes caeruleus", id: "pic_11_gtelvp" },
-      { info: "Mésange charbonnière - Parus major", id: "pic_12_zhjapv" },
-      { info: "Merle noir - Turdus merula", id: "pic_13_wtzbr6" },
-      { info: "Merle noir - Turdus merula", id: "pic_14_sioyxv" },
-      { info: "Merle noir - Turdus merula", id: "pic_16_crnxsd" },
-      { info: "Merle noir - Turdus merula", id: "pic_15_g5nxlk" },
+    apps: [
       {
-        info: "Orite à longue queue - Aegithalos caudatus",
-        id: "pic_17_srj8tv",
+        titre: "Quotidie",
+        icon_url: "/apps/icon_quotidie.png",
+        description:
+          "Reçois tous les jours à 9h l'évangile du jour ! Quotidie te donne aussi le saint du jour et un recueil de prières.",
+        mockup_url: "/apps/quotidie_mockup.png",
+        url: "https://quotidie.fr",
       },
       {
-        info: "Orite à longue queue - Aegithalos caudatus",
-        id: "pic_18_olpivs",
+        titre: "Auditere",
+        icon_url: "/apps/icon_auditere.png",
+        description:
+          "Permet de rechercher et lire de la musique sur Youtube tout en vérouillant le téléphone. Peut aussi enregistrer et lire des playlists crées sur Youtube.",
+        mockup_url: "/apps/auditere_mockup.png",
+        url: "https://auditere.netlify.app",
       },
       {
-        info: "Orite à longue queue - Aegithalos caudatus",
-        id: "pic_19_uuppz6",
-      },
-      { info: "Écureuil roux - Sciurus vulgaris", id: "pic_20_gx7vyg" },
-      { info: "Écureuil roux - Sciurus vulgaris", id: "pic_21_twr8fy" },
-      {
-        info: "Orite à longue queue - Aegithalos caudatus",
-        id: "pic_22_ja6aa4",
+        titre: "Aucellus",
+        icon_url: "/apps/icon_aucellus.png",
+        description:
+          "Fiches, chants et photos d'oiseaux français. Données issues du site  <a style = 'color: white;' href='https://www.oiseaux.net/' target='_blank'>oiseaux.net</a>.",
+        mockup_url: "/apps/Aucellus_mockup.png",
+        url: "https://aucellus.netlify.app",
       },
       {
-        info: "Orite à longue queue - Aegithalos caudatus",
-        id: "pic_24_tpfrj6",
+        titre: "TBM",
+        icon_url: "/apps/icon_tbm.png",
+        description:
+          "Application pour se déplacer à Bordeaux, quand le tram fonctionne... Permet d'accéder rapidement aux horaires de tram et de bus sur le réseau TBM.",
+        mockup_url: "/apps/TBM_mockup.png",
+        url: "https://tbmapp.netlify.app",
       },
       {
-        info: "Orite à longue queue - Aegithalos caudatus",
-        id: "pic_23_v31jia",
-      },
-      { info: "Mésange bleue - Cyanistes caeruleus", id: "pic_25_gff9bd" },
-      { info: "Mésange bleue - Cyanistes caeruleus", id: "pic_26_okldyp" },
-      {
-        info: "Rouge-gorge familier - Erithacus rubecula",
-        id: "pic_27_bw4nuu",
+        titre: "D&D app",
+        icon_url: "/apps/icon_dnd.png",
+        description:
+          "Application pour D&D 5E, permet de trouver rapidement un sort ou un object magique. Possibilité de faire une recherche filtrée.",
+        mockup_url: "/apps/dnd_mockup.png",
+        url: "https://dnd-app.netlify.app",
       },
       {
-        info: "Rouge-gorge familier - Erithacus rubecula",
-        id: "pic_28_qldjzy",
+        titre: "Quaesto",
+        icon_url: "/apps/icon_quaesto.png",
+        description:
+          "Version numérique du catéchisme  de l'Église catholique, permet de recherche un terme et d'accèder aux sections y faisant référence.",
+        mockup_url: "/apps/Quaesto_mockup.png",
+        url: "https://quaesto.netlify.app",
       },
-      { info: "Mésange charbonnière - Parus major", id: "pic_29_rjhju7" },
-      { info: "Merle noir - Turdus merula", id: "pic_31_mk9pqa" },
-      { info: "Merle noir - Turdus merula", id: "pic_30_x3aovk" },
-      { info: "Merle noir - Turdus merula", id: "pic_32_ovzkcm" },
-      { info: "Corneille noire - Corvus corone", id: "pic_34_pakqck" },
       {
-        info: "Troglodyte mignon - Troglodytes troglodytes",
-        id: "pic_35_kr268b",
+        titre: "7W",
+        icon_url: "/apps/icon_7W.png",
+        description:
+          "Permet de distribuer aléatoirement les places et les merveilles de départ pour 7 wonders. Automatise et rend plus rapide le comptage des points. Affiche des statistiques de jeux.",
+        mockup_url: "/apps/7W_mockup.png",
+        url: "https://7w-app.netlify.app",
       },
-      { info: "Étourneau sansonnet - Sturnus vulgaris", id: "pic_36_f0dq9x" },
-      { info: "Étourneau sansonnet - Sturnus vulgaris", id: "pic_37_lszsx1" },
-      {
-        info: "Fauvette à tête noire - Sylvia atricapilla",
-        id: "pic_38_l0nmtb",
-      },
-      { info: "Merle noir - Turdus merula", id: "pic_39_hqbx2y" },
-      {
-        info: "Orite à longue queue - Aegithalos caudatus",
-        id: "pic_40_kftueq",
-      },
-      { info: "Abeille - Anthophila", id: "pic_41_bwk1tr" },
-      { info: "Abeille - Anthophila", id: "pic_42_svskbm" },
+      // {
+      //   titre: "Trambot",
+      //   icon_url: "/apps/icon_trambot.png",
+      //   description:
+      //     "Chatbot sur Messenger, permet d'obtenir les horaires des prochains passages pour les bus et trams, en fonction de l'arrêt demandé. NE FONCTIONNE PLUS, à cause de la super politique de Facebook concernant les chatbots...",
+      //   mockup_url: "/apps/trambot_mockup.png",
+      //   url: "https://m.me/TramBotBordeaux",
+      // },
     ],
-    height: 200,
-    space: 20,
+    projects: [
+      {
+        titre: "Boids",
+        descriptionHtml:
+          "Simulation de vol d'un groupe d'oiseaux. Inspiré de <a style = 'color: white;' href='https://www.youtube.com/watch?v=bqtqltqcQhw' target='_blank'>https://www.youtube.com/watch?v=bqtqltqcQhw</a>. A consulter sur ordinateur pour conserver la mise en page.",
+        url: "https://cuke7.github.io/Boids/",
+      },
+      {
+        titre: "Conjecture de Collatz",
+        descriptionHtml:
+          "Illustration de la conjecture de Collatz, inspiré de <a style = 'color: white;' href='https://www.youtube.com/watch?v=094y1Z2wpJg' target='_blank'>https://www.youtube.com/watch?v=094y1Z2wpJg</a>. A consulter sur ordinateur pour conserver la mise en page.",
+        url: "https://cuke7.github.io/CollatzConjecture/",
+      },
+    ],
   }),
-  computed: {
-    // heigh() {
-    //   return window.innerHeight - 100;
-    // },
-  },
-  methods: {
-    getUrl(index) {
-      let url = "/pictures/pic_" + index + ".jpg";
-      return url;
-    },
-    resizeUI() {
-      let height = document.querySelector(".v-main").clientHeight - 140;
-      let space = Math.floor(((this.$refs.row.clientWidth / 3) * 0.05 * 2) / 3);
-
-      this.height = height;
-      this.space = space;
-    },
-  },
-  mounted() {
-    this.resizeUI();
-    //this.$refs.musicPlayer.load_playlist({ name: "Guitars", url: "https://www.youtube.com/playlist?list=PLY80CRqvcxEXtmbMSJDqIK4uk_FB3j5I8" });
-  },
 };
 </script>
 
-<style scoped>
-#toto {
-  overflow-y: scroll;
-}
-
-#test {
-  margin-top: 16px;
-}
-
-/* width */
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px rgba(128, 128, 128, 0);
-  border-radius: 10px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: rgb(255, 255, 255);
-  border-radius: 5px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #b8b8b8;
-}
+<style>
+/* .v-main {
+  background-image: linear-gradient(
+    to right top,
+    #3a46c9,
+    #0072e1,
+    #008ed2,
+    #00a3ad,
+    #00b389
+  );
+} */
 </style>
