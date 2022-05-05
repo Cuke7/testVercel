@@ -43,6 +43,14 @@ export default {
         url: "https://aucellus.netlify.app",
       },
       {
+        titre: "TBM",
+        icon_url: "/apps/icon_tbm.png",
+        description:
+          "Application pour se déplacer à Bordeaux, quand le tram fonctionne... Permet d'accéder rapidement aux horaires de tram et de bus sur le réseau TBM.",
+        mockup_url: "/apps/TBM_mockup.png",
+        url: "https://tbmapp.netlify.app",
+      },
+      {
         titre: "D&D app",
         icon_url: "/apps/icon_dnd.png",
         description:
